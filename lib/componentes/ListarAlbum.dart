@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pjc_app/api/AlbumApi.dart';
+import 'package:pjc_app/componentes/TextPesquisa.dart';
 import 'package:pjc_app/model/Album.dart';
 
 class ListarAlbum extends StatefulWidget {
@@ -21,9 +22,20 @@ class ListarAlbumState extends State<ListarAlbum> {
     return Container(
       child: Column(
         children: <Widget>[
+          _pesquisarAlbum(),
           _buscarAlbuns(),
         ],
       ),
+    );
+  }
+
+  Widget _pesquisarAlbum() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+      child: TextPesquisa((text) {
+        nome = text;
+        refreshList();
+      }),
     );
   }
 
