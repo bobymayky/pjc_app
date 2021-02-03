@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:pjc_app/model/Album.dart';
-import 'package:pjc_app/model/Artista.dart';
 import 'package:pjc_app/values/UrlApi.dart';
 
 import 'dart:convert';
