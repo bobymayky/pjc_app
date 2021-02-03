@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pjc_app/componentes/ListarAlbum.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -20,6 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
+      body: ListarAlbum(nome: ""),
     );
   }
 }
