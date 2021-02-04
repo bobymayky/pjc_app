@@ -26,4 +26,10 @@ class AlbumApi {
 
     return parsed.map<Album>((json) => Album.fromJson(json)).toList();
   }
+
+  Future<String> buscarCapaAlbum(int idAlbum) async {
+    final response = await http.get(
+        UrlApi.url + 'album/visualizar/capa?albumId=' + idAlbum.toString());
+    return Future<String>.value(response.body);
+  }
 }

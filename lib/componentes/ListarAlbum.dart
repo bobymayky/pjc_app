@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pjc_app/api/AlbumApi.dart';
+import 'package:pjc_app/componentes/ImagePrincipalAlbum.dart';
 import 'package:pjc_app/componentes/TextPesquisa.dart';
 import 'package:pjc_app/model/Album.dart';
 
@@ -66,26 +67,37 @@ class ListarAlbumState extends State<ListarAlbum> {
         return new Container(
           color: Colors.black12,
           child: Card(
-            color: Colors.white,
-            margin: EdgeInsets.all(2),
-            elevation: 1,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      children: <Widget>[
-                        _buscarNomeArtista(albuns[index]),
-                        _buscarNomeAlbum(albuns[index])
-                      ],
+              color: Colors.white,
+              margin: EdgeInsets.all(2),
+              elevation: 1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    ClipRect(
+                      child: Container(
+                        child: Align(
+                          alignment: Alignment.center,
+                          widthFactor: 0.4,
+                          heightFactor: 1.0,
+                          child: ImagePrincipalAlbum(
+                            idAlbum: albuns[index].id,
+                          ),
+                        ),
+                      ),
                     ),
-                  )
-                ],
-              ),
-            ),
-          ),
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          _buscarNomeArtista(albuns[index]),
+                          _buscarNomeAlbum(albuns[index])
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )),
         );
       },
     );
@@ -119,7 +131,6 @@ class ListarAlbumState extends State<ListarAlbum> {
           Expanded(
               child: Text(
             album.nome,
-            maxLines: 20,
             style: TextStyle(fontSize: 12.0),
           ))
         ],
