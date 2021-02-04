@@ -3,6 +3,7 @@ import 'package:pjc_app/api/AlbumApi.dart';
 import 'package:pjc_app/componentes/ImagePrincipalAlbum.dart';
 import 'package:pjc_app/componentes/TextPesquisa.dart';
 import 'package:pjc_app/model/Album.dart';
+import 'package:pjc_app/screens/base/VisualizarAlbum.dart';
 
 class ListarAlbum extends StatefulWidget {
   String nome;
@@ -66,7 +67,11 @@ class ListarAlbumState extends State<ListarAlbum> {
       itemBuilder: (BuildContext context, int index) {
         return new Container(
           color: Colors.black12,
-          child: Card(
+          child: GestureDetector(
+            onTap: () {
+              _visualizarAlbum(context, albuns[index]);
+            },
+            child: Card(
               color: Colors.white,
               margin: EdgeInsets.all(2),
               elevation: 1,
@@ -97,10 +102,22 @@ class ListarAlbumState extends State<ListarAlbum> {
                     )
                   ],
                 ),
-              )),
+              ),
+            ),
+          ),
         );
       },
     );
+  }
+
+  void _visualizarAlbum(BuildContext context, Album album) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => VisualizarAlbum(
+            album: album,
+          ),
+        ));
   }
 
   Widget _buscarNomeArtista(Album album) {
